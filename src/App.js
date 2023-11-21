@@ -2,22 +2,52 @@ import './App.css';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import BlogPage from './components/BlogPage';
+import CreateExpense from './components/CreateExpense';
+import DisplayExpense from './components/DisplayExpense';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import db from "./firebase";
+import { useEffect, useState } from 'react';
+import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore"; 
 
-function App() {
-  return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/blog" element={<BlogPage />} />
+import { async } from '@firebase/util';
+
+// function App() {
+//   return (
+//     <Router>
+//       <div className="App">
+//         <Header />
+//         <Routes>
+//           <Route path="/" element={<HomePage />} />
+//           <Route path="/blog" element={<BlogPage />} />
           
-        </Routes>
-      </div>
-    </Router>
+//         </Routes>
+//       </div>
+//     </Router>
+//   );
+// }
+
+
+function App(){
+  const [expenses, setExpenses] = useState([]);
+    useEffect(() => {
+      const expensedata = collection(db, "expense")
+      getDocs(expensedata).then((detail) => {
+        console.log(detail.docs.map((doc) => ({...doc.data()})))
+        setExpenses(detail.docs.map((doc) => ({...doc.data()})));
+      })
+    }, []);
+
+  return(
+    <>
+    <div className='App'>
+      <div >出費を入力する</div>
+      <div><CreateExpense /></div>
+      <DisplayExpense />
+    </div>
+
+    </>
   );
 }
 
-
 export default App;
+
