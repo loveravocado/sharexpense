@@ -4,6 +4,7 @@ import HomePage from './components/HomePage';
 import BlogPage from './components/BlogPage';
 import CreateExpense from './components/CreateExpense';
 import DisplayExpense from './components/DisplayExpense';
+import Calendar from './components/Calendar.js';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import db from "./firebase";
 import { useEffect, useState } from 'react';
@@ -39,10 +40,14 @@ function App(){
 
   return(
     <>
+    <script src="https://cdn.tailwindcss.com"></script>
     <div className='App'>
       <div >出費を入力する</div>
       <div><CreateExpense /></div>
       <DisplayExpense />
+      <Calendar />
+
+        
     </div>
 
     </>
