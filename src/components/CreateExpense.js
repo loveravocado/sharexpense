@@ -5,6 +5,8 @@ import db from "../firebase";
 export default function CreateExpense(){
     const [item, setItem] = useState();
     const [amount, setAmount] = useState();
+
+        
       const CreateExpense = async () =>{
         await addDoc(collection(db, "expense"),{
           item:item,
