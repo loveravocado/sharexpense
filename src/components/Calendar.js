@@ -61,7 +61,6 @@ export default function Calendar(){
           {/* <Sidebar /> */}
           <Month month={currentMonth} />
         </div>
-        <div>aaa</div>
       </div>
         </>
     )

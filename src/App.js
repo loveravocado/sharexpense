@@ -1,7 +1,4 @@
 import './App.css';
-import Header from './components/Header';
-import HomePage from './components/HomePage';
-import BlogPage from './components/BlogPage';
 import CreateExpense from './components/CreateExpense';
 import DisplayExpense from './components/DisplayExpense';
 import Calendar from './components/Calendar.js';
@@ -9,7 +6,11 @@ import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import db from "./firebase";
 import { useEffect, useState } from 'react';
 import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore"; 
-
+import Footer from './components/Footer';
+import Home from './components/Home';
+import Input from './components/Input';
+import Display from './components/Display';
+import Friend from './components/Friend';
 import { async } from '@firebase/util';
 
 // function App() {
@@ -46,8 +47,7 @@ function App(){
       <div><CreateExpense /></div>
       <DisplayExpense />
       <Calendar />
-
-        
+      <Footer />     
     </div>
 
     </>

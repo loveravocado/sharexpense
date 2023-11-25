@@ -38,6 +38,7 @@ export default function DisplayExpense(){
             <div key={expense.item}>
                 <div>{expense.item}</div>
                 <div>{expense.amount}</div>
+                <div>{expense.time}</div>
             </div>
         
           ))}
