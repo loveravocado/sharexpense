@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore"; 
 import Footer from './components/Footer';
 import { async } from '@firebase/util';
+import Header from './components/Header';
 
 
 
@@ -25,10 +26,7 @@ function App(){
     <>
     <script src="https://cdn.tailwindcss.com"></script>
     <div className='App'>
-      <div >出費を入力する</div>
-      <div><CreateExpense /></div>
-      <DisplayExpense />
-      <Calendar />
+      <Header/>
       <Footer />     
     </div>
 
