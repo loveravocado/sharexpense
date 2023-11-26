@@ -1,6 +1,6 @@
 import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore"; 
 import { useEffect, useState } from 'react';
-import db from "../firebase";
+import { db } from "../firebase";
 
 export default function CreateExpense(){
     const [item, setItem] = useState();

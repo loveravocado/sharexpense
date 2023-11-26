@@ -1,9 +1,6 @@
 import { collection, getDocs, getFirestore, getAggregateFromServer,getCountFromServer, average, sum, query, where } from "firebase/firestore"; 
 import { useEffect, useState } from 'react';
-import db from "../firebase";
-
-
-const orderQuery = query ( collection ( db, "expense"));
+import { db } from "../firebase";
 
 
 

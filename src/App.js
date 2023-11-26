@@ -3,7 +3,7 @@ import CreateExpense from './components/CreateExpense';
 import DisplayExpense from './components/DisplayExpense';
 import Calendar from './components/Calendar.js';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import db from "./firebase";
+import { db } from "./firebase";
 import { useEffect, useState } from 'react';
 import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore"; 
 import Footer from './components/Footer';
