@@ -7,26 +7,8 @@ import db from "./firebase";
 import { useEffect, useState } from 'react';
 import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore"; 
 import Footer from './components/Footer';
-import Home from './components/Home';
-import Input from './components/Input';
-import Display from './components/Display';
-import Friend from './components/Friend';
 import { async } from '@firebase/util';
 
-// function App() {
-//   return (
-//     <Router>
-//       <div className="App">
-//         <Header />
-//         <Routes>
-//           <Route path="/" element={<HomePage />} />
-//           <Route path="/blog" element={<BlogPage />} />
-          
-//         </Routes>
-//       </div>
-//     </Router>
-//   );
-// }
 
 
 function App(){
