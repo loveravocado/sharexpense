@@ -1,38 +1,32 @@
-import './App.css';
-import CreateExpense from './components/CreateExpense';
-import DisplayExpense from './components/DisplayExpense';
-import Calendar from './components/Calendar.js';
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import { db } from "./firebase";
-import { useEffect, useState } from 'react';
-import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore"; 
-import Footer from './components/Footer';
-import { async } from '@firebase/util';
+import React from 'react';
 import Header from './components/Header';
+import Footer from './components/Footer';
+import { signInWithPopup } from 'firebase/auth';
+import { useEffect, useState, createContext } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link} from "react-router-dom";
+import { auth, provider } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import Home from './components/Home';
+import Input from './components/Input';
+import Display from './components/Display';
+import Friend from './components/Friend';
 
 
 
-function App(){
-  const [expenses, setExpenses] = useState([]);
-    useEffect(() => {
-      const expensedata = collection(db, "expense")
-      getDocs(expensedata).then((detail) => {
-        console.log(detail.docs.map((doc) => ({...doc.data()})))
-        setExpenses(detail.docs.map((doc) => ({...doc.data()})));
-      })
-    }, []);
-
+export default function App(){
   return(
     <>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <div className='App'>
-      <Header/>
-      <Footer />     
-    </div>
+
+    
+            <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/input" element={<Input />} />
+                    <Route path="/display" element={<Display />} />
+                    <Route path="/friend" element={<Friend />} />
+            </Routes>
 
     </>
-  );
+  )
 }
-
-export default App;
 

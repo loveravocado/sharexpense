@@ -3,7 +3,11 @@ import icon_input from "../img/sharexpense_icon_input.png";
 import icon_display from "../img/sharexpense_icon_display.png";
 import icon_friend from "../img/sharexpense_icon_friend.png";
 import { BrowserRouter as Router, Route, Routes, Link} from "react-router-dom";
+import { useEffect, useState, useContext } from 'react';
 import React from 'react';
+import { UserName } from './Home'; 
+
+
 import Home from './Home';
 import Input from './Input';
 import Display from './Display';
@@ -12,6 +16,8 @@ import "./Footer.css";
 
 
 export default function Footer(){
+    const username = useContext(UserName);
+
     return(
         <>
 

@@ -29,9 +29,10 @@ const Day = (props) => {
       <div className="border border-gray-200 flex flex-col">
         <header className="flex flex-col items-center">
           {/* 1行目に曜日を表示 */}
-          {rowIdx === 0 && <p className="text-sm mt-1">{day.format("ddd")}</p>}
-          <p className={`text-sm p-1 my-1 text-center" ${getCurrentDayClass()}`}></p>
-          <p className={"text-sm p-1 my-1 text-center"}>{day.format("DD")}</p>
+          {rowIdx === 0 && <p className="text-sm mt-1 leading-6">{day.format("ddd")}</p>}
+          <p className={`text-sm p-1  text-center" ${getCurrentDayClass()}`}></p>
+          <p className={"text-sm p-1  text-center"}>{day.format("DD")}</p>
+          <p>a</p>
         </header>
       </div>
     );
@@ -39,7 +40,7 @@ const Day = (props) => {
 const Month = (props) => {
     const { month } = props;
     return (
-      <div className="flex-1 grid grid-cols-7 grid-rows-5">
+      <div className="flex-1 grid grid-cols-7 grid-rows-5 ">
         {month.map((row, i) => (
           <React.Fragment key={i}>
             {row.map((day, idx) => (
@@ -56,8 +57,8 @@ export default function Calendar(){
 
     return(
         <>
-        <div className="h-screen flex flex-col">
-        <div className="flex flex-1">
+        <div className="h-10 flex flex-col ">
+        <div className="flex flex-1 ">
           {/* <Sidebar /> */}
           <Month month={currentMonth} />
         </div>

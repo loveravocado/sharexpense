@@ -3,59 +3,91 @@ import Header from './Header';
 import Footer from './Footer';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState, createContext } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Provider } from "react-redux"
+import store from "./store/reindex";
+import { useSelector, useDispatch } from "react-redux";
+export const UserName = createContext()
 
 
 export default function Home() {
-    const [user] = useAuthState(auth);
-  return (
-    <>
-    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+    const count = useSelector((state) => state.count);
+    const [username, setUsername] = useState(null);
+//   const dispatch = useDispatch();
+//   const increase = () => {
+//     dispatch({ type: "INCREASE_COUNT" });
+//   };
+//   const decrease = () => {
+//     dispatch({ type: "DECREASE_COUNT" });
+//   };
+    onAuthStateChanged(auth, (user) => {
+    if (user) {
+        if(user.displayName){
+            setUsername(user.displayName);
+        }
 
-    <div>
-        <Header name="Home"/>
-            Home
-            {user ? (
-                <>
-                    <UserInfo />
-                    <SignOutButton />
-                </>
-            ):(
-                <SignInButton />
-            )}
-            
+    }})
 
-        <Footer/>
-    </div>
-    </>
-  )
-}
-function SignInButton(){
-    const signInWithGoogle = () =>{
-        signInWithPopup(auth, provider)
-    }
     return (
-        <button onClick={signInWithGoogle}>
-            Googleでサインイン
-        </button>
+      <>
+      <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+  
+      <div>
+        
+              {username ? (
+                  <>
+                      <Header />
+                      <p>Count:{store.getState().count}</p>
 
-    )
-}
-function SignOutButton(){
-    return (
-        <button onClick={() => auth.signOut()}>
-            サインアウト
-        </button>
+                      <UserInfo />
+                      <SignOutButton />
+                    <UserName.Provider value= "2"> 
+                        <Footer />
+                    </UserName.Provider> 
 
+  
+                  </>
+              ):(
+                  <SignInButton />
+              )}    
+
+      </div>
+      </>
     )
-}
-function UserInfo(){
-    return (
-        <>
-            <div className='user-info'>
-                <img src={auth.currentUser.photoURL} alt=""></img>
-                <p> {auth.currentUser.displayName}</p>
-            </div>
-        </>
-    )
-}
+  }
+  function SignInButton(){
+      const signInWithGoogle = () =>{
+          signInWithPopup(auth, provider)
+      }
+      return (
+          <button onClick={signInWithGoogle}>
+              Googleでサインイン
+          </button>
+  
+      )
+  }
+  function SignOutButton(){
+      return (
+          <button onClick={() => auth.signOut()}>
+              サインアウト
+          </button>
+  
+      )
+  }
+  function UserInfo(){
+    
+      return (
+          <>
+              <div className='user-info'>
+                  <img src={auth.currentUser.photoURL} alt=""></img>
+                  <p> {auth.currentUser.displayName}</p>
+              </div>
+          </>
+      )
+  }
+
+
+
+  
