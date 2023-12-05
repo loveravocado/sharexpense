@@ -10,14 +10,12 @@ import { db } from "../firebase";
 import { UserName } from './Home'; 
 
 
-export default function Friend(prpos){
-  const [username, setUsername] = useState()
+export default function Friend(){
+  const [fruid, setFruid] = useState()
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
-        console.log("1")
-        setUsername(user.displayName)
-        console.log({username});
+        setFruid(user.uid)
         }
     }
     
@@ -29,9 +27,9 @@ export default function Friend(prpos){
         <div className='friend'>
           <div className='displayfriend'>
             <h1>友達一覧</h1>
-            {username ? (
+            {fruid ? (
             <>
-            <FriendData  name={username}/>
+            <FriendData  uid={fruid}/>
             </>
             ) :("")}
 
@@ -45,33 +43,29 @@ export default function Friend(prpos){
   
 }
 
-function FriendData({name}){
+function FriendData({uid}){
   
-  const [saving, setSaving] = useState([]);
-  console.log("2")
-  console.log(name)
-  
-  
+  const [savings, setSavings] = useState([]);
 
   useEffect(() => {
     
     const f = async() => {
       
-    const savingdata = query(collection(db, "saving"), where("name", "!=", name));
-    console.log("3")
-       
+    const savingdata = query(collection(db, "saving"), where("name", "!=", uid));
+
       const querySnapshot = await getDocs(savingdata);
     
       querySnapshot.forEach((doc) =>{ 
-        setSaving((saving)=>[...saving, doc.data()]);
+        setSavings((savings)=>[...savings, doc.data()]);
       });
     };
     f();
+   
     
   }, []);
   return(
     <>
-    {saving.map((saving)=> ( 
+    {savings.map((saving)=> ( 
       <div key={saving.name }>
         <div>{saving.name}</div>
         <div>{saving.month}</div>

@@ -1,33 +1,54 @@
-import { collection, getDocs, getFirestore,  } from "firebase/firestore"; 
+import { collection, getDocs, getFirestore, where, query } from "firebase/firestore"; 
 import { useEffect, useState } from 'react';
 import { db } from "../firebase";
-import "../App.css"
+import "../App.css";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, provider, username } from "../firebase";
 
 
 
 export default function DisplayExpense(){
-    const [sumExpense, setSumExpense] = useState();
-    const [expenses, setExpenses] = useState([]);
 
+    const [diexuid, setDiexuid] = useState();
 
-      
-
-    useEffect(() => {
-      const expensedata = collection(db, "expense")
-      getDocs(expensedata).then((detail) => {
-        setExpenses(detail.docs.map((doc) => ({...doc.data()})));
-        
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+          setDiexuid(user.uid)
+          }
       })
-    }, []);
-    const total = expenses.reduce((sum, i) => sum + i.amount, 0);
-
- 
 
     return(
         <>
         <div className="displayexpense">
         <div>出費一覧</div>
-        {expenses.map((expense) => (
+        {diexuid ? (
+            <>
+            <DisplayExpenseData  uid={diexuid}/>
+            </>
+            ) :("")}
+    </div> 
+        </>
+    
+    )
+}
+function DisplayExpenseData({uid}){
+  const [expenses, setExpenses] = useState([]);
+
+  useEffect(() => {
+    const f = async() => {
+    const expensedata = query(collection(db, "expense"), where("uid", "==", uid))
+    getDocs(expensedata).then((detail) => {
+      setExpenses(detail.docs.map((doc) => ({...doc.data()})));
+      
+    })
+  }
+  f();
+  }, []);
+  const total = expenses.reduce((sum, i) => sum + i.amount, 0);
+
+  return(
+    <>
+            {expenses.map((expense) => (
             <div key={expense.item}>
                 <div>{expense.item}</div>
                 <div>{expense.amount}</div>
@@ -36,8 +57,6 @@ export default function DisplayExpense(){
         
           ))}
     <div>合計値：{total}円</div> 
-    </div> 
-        </>
-    
-    )
+    </>
+  )
 }

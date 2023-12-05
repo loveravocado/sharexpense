@@ -2,17 +2,25 @@ import React from 'react'
 import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore"; 
 import { useEffect, useState } from 'react';
 import { db } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, provider, username } from "../firebase";
 
 export default function CreateSaving() {
 
     const [month, setMonth] = useState();
     const [savingAmount, setSavingAmount] = useState();
+    const [sauid, setSauid] = useState();
 
-        
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+          setSauid(user.uid)
+          }
+      })
       const CreateExpense = async () =>{
         await addDoc(collection(db, "saving"),{
           month:month,
           amount:savingAmount,
+          uid:sauid
         })
       }
       return (

@@ -15,13 +15,6 @@ export const UserName = createContext()
 export default function Home() {
     const count = useSelector((state) => state.count);
     const [username, setUsername] = useState(null);
-//   const dispatch = useDispatch();
-//   const increase = () => {
-//     dispatch({ type: "INCREASE_COUNT" });
-//   };
-//   const decrease = () => {
-//     dispatch({ type: "DECREASE_COUNT" });
-//   };
     onAuthStateChanged(auth, (user) => {
     if (user) {
         if(user.displayName){
@@ -43,9 +36,7 @@ export default function Home() {
 
                       <UserInfo />
                       <SignOutButton />
-                    <UserName.Provider value= "2"> 
-                        <Footer />
-                    </UserName.Provider> 
+                      <Footer />
 
   
                   </>

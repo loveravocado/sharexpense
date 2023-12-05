@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { signInWithPopup } from 'firebase/auth';
@@ -19,12 +18,12 @@ export default function App(){
     <>
 
     
-            <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/input" element={<Input />} />
-                    <Route path="/display" element={<Display />} />
-                    <Route path="/friend" element={<Friend />} />
-            </Routes>
+             <Routes>
+                     <Route path="/" element={<Home />} />
+                     <Route path="/input" element={<Input />} />
+                     <Route path="/display" element={<Display />} />
+                     <Route path="/friend" element={<Friend />} />
+             </Routes>
 
     </>
   )

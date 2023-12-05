@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import { useEffect, useState } from 'react';
 import React from "react";
+import { useEffect, useState } from 'react';
 import "../App.css"; 
 
 
@@ -55,14 +55,14 @@ const Month = (props) => {
 export default function Calendar(){
     const [currentMonth, setCurrentMonth] = useState(getMonth());
 
-    return(
-        <>
-        <div className="h-10 flex flex-col ">
-        <div className="flex flex-1 ">
-          {/* <Sidebar /> */}
-          <Month month={currentMonth} />
-        </div>
-      </div>
-        </>
-    )
+    // return(
+    //     <>
+    //     <div className="h-10 flex flex-col ">
+    //     <div className="flex flex-1 ">
+    //       {/* <Sidebar /> */}
+    //       <Month month={currentMonth} />
+    //     </div>
+    //   </div>
+    //     </>
+    // )
 }
