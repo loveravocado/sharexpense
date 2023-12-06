@@ -10,17 +10,20 @@ export default function CreateSaving() {
     const [month, setMonth] = useState();
     const [savingAmount, setSavingAmount] = useState();
     const [sauid, setSauid] = useState();
+    const [sausername, setSausername] = useState();
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
           setSauid(user.uid)
+          setSausername(user.displayName)
           }
       })
       const CreateExpense = async () =>{
         await addDoc(collection(db, "saving"),{
           month:month,
           amount:savingAmount,
-          uid:sauid
+          uid:sauid,
+          username: sausername
         })
       }
       return (

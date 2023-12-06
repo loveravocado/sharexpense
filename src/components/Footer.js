@@ -5,7 +5,6 @@ import icon_friend from "../img/sharexpense_icon_friend.png";
 import { BrowserRouter as Router, Route, Routes, Link} from "react-router-dom";
 import { useEffect, useState, useContext } from 'react';
 import React from 'react';
-import { UserName } from './Home'; 
 
 
 import Home from './Home';
@@ -16,7 +15,6 @@ import "./Footer.css";
 
 
 export default function Footer(){
-    const username = useContext(UserName);
 
     return(
         <>

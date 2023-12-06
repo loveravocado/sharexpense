@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import { useEffect, useState, useContext, useRef  } from 'react';
-import { collection, getDocs, getFirestore, where, query } from "firebase/firestore"; 
+import { collection, getDocs, where, query } from "firebase/firestore"; 
 import { auth, provider, username } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -47,17 +47,20 @@ function FriendData({uid}){
   
   const [savings, setSavings] = useState([]);
 
+
   useEffect(() => {
     
     const f = async() => {
       
-    const savingdata = query(collection(db, "saving"), where("name", "!=", uid));
+    const savingdata = query(collection(db, "saving"), where("uid", "!=", {uid}));
+     
 
       const querySnapshot = await getDocs(savingdata);
     
       querySnapshot.forEach((doc) =>{ 
         setSavings((savings)=>[...savings, doc.data()]);
       });
+
     };
     f();
    
@@ -66,8 +69,8 @@ function FriendData({uid}){
   return(
     <>
     {savings.map((saving)=> ( 
-      <div key={saving.name }>
-        <div>{saving.name}</div>
+      <div key={saving.username }>
+        <div>{saving.username}</div>
         <div>{saving.month}</div>
         <div>{saving.amount}</div>
       </div>

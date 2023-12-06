@@ -2,24 +2,19 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from "../firebase";
+import { auth, provider,db } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState, createContext } from 'react';
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Provider } from "react-redux"
-import store from "./store/reindex";
-import { useSelector, useDispatch } from "react-redux";
-export const UserName = createContext()
-
-
+import { collection, addDoc, getDocs, where, query } from "firebase/firestore"; 
 export default function Home() {
-    const count = useSelector((state) => state.count);
-    const [username, setUsername] = useState(null);
+    const [username, setUsername] = useState("");
+    const [uid, setUid] = useState("");
+    const [useremail, setUseremail] = useState("");
     onAuthStateChanged(auth, (user) => {
     if (user) {
-        if(user.displayName){
             setUsername(user.displayName);
-        }
+            setUid(user.uid);
+            setUseremail(user.email);
 
     }})
 
@@ -32,11 +27,10 @@ export default function Home() {
               {username ? (
                   <>
                       <Header />
-                      <p>Count:{store.getState().count}</p>
 
-                      <UserInfo />
+                      <UserInfo username ={username} uid={uid} useremail={useremail}/>
                       <SignOutButton />
-                      <Footer />
+                    <Footer />
 
   
                   </>
@@ -54,7 +48,7 @@ export default function Home() {
       }
       return (
           <button onClick={signInWithGoogle}>
-              Googleでサインイン
+              Googleでサインアップ
           </button>
   
       )
@@ -67,7 +61,30 @@ export default function Home() {
   
       )
   }
-  function UserInfo(){
+  function UserInfo({username, uid, useremail}){
+
+  useEffect(() => {
+    
+    const f = async() => {
+      
+    const userdata = query(collection(db, "userdata"), where("uid", "==", {uid}));
+
+    if(userdata){
+        const UserData = async () =>{
+
+            await addDoc(collection(db, "userdata"),{
+              username: username,
+              uid: uid,
+              useremail:useremail
+            })
+          }
+        UserData();
+    }
+    };
+    f();
+   
+    
+  }, []);
     
       return (
           <>
