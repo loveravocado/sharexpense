@@ -2,13 +2,7 @@
     margin: 0;
 }
 
-.header-box{
-    width        : 100%;
-    height       : 80px;
-    background   : #FFFFFF;
-    box-shadow: 0 5px 3px 0 rgba(0, 0, 0, .05);
-    position: relative;
-}
+
 
 .header-name{
     font-size: 30px;
@@ -18,4 +12,22 @@
     left: 50%;
     margin: -10px 0 0 -50px;
 
+}
+.header-bottombox{
+    position: absolute;
+    margin: 0 auto;
+    top: 170px;
+    left: 5%;
+    width: 90%;
+    height: 70%;
+    background-color:white;
+    box-shadow: 0 5px 3px 0 rgba(0, 0, 0, .05);
+    border-radius: 30px;
+    z-index: 2;
+}
+.input_icon_back{
+    position: absolute;
+    width: 20%;
+    height: auto;
+    top:20%;
 }
