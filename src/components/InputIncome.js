@@ -37,11 +37,11 @@ export default function InputIncome() {
         <div className='input back_income'>
             <div className='input_all'>
                 <div className='input_income'>
-                <img className= "input_icon_income_contents" src= {icon_income} alt="home"/><p className="input_text_income_contents">収入</p>
-                <div className='input_income_item_back back_item'><input type="text" className='input_income_item' placeholder='項目を記入' onChange={(e) => setIncomeItem(e.target.value)}></input></div>
-                <div className='input_income_item_back back_amount'><input type="text" className='input_income_item' placeholder='金額を記入' onChange={(e) => setIncomeAmount(Number(e.target.value))}></input></div>
-                <div className='input_income_item_back back_date'><input type="date" className='input_income_item' placeholder='日付を記入' onChange={(e) => setIncomeDate(e.target.value)}></input></div>
-                <Link to ="/input_incomedone" ><button className='income_postButton'onClick={CreateIncome} >決定</button></Link>
+                <img className= "input_income_icon_contents" src= {icon_income} alt="home"/><p className="input_text_contents">収入</p>
+                <div className='input_item_back back_item income_color'><input type="text" className='input_item' placeholder='項目を記入' onChange={(e) => setIncomeItem(e.target.value)}></input></div>
+                <div className='input_item_back back_amount income_color'><input type="text" className='input_item' placeholder='金額を記入' onChange={(e) => setIncomeAmount(Number(e.target.value))}></input></div>
+                <div className='input_item_back back_date income_color'><input type="date" className='input_item' placeholder='日付を記入' onChange={(e) => setIncomeDate(e.target.value)}></input></div>
+                <Link to ="/input_incomedone" ><button className='income_postButton income_color'onClick={CreateIncome} >決定</button></Link>
                 </div>
             </div>
         </div>
