@@ -1,9 +1,9 @@
 import { collection, getDocs, getFirestore, where, query } from "firebase/firestore"; 
 import { useEffect, useState } from 'react';
-import { db } from "../firebase";
-import "../App.css";
+import { db } from "../../firebase";
+import "../../App.css";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, provider, username } from "../firebase";
+import { auth, provider, username } from "../../firebase";
 
 
 

@@ -7,8 +7,8 @@ import React from 'react';
 
 
 import Home from './Home';
-import Input from './Input';
-import Display from './Display';
+import Input from './Input/Input';
+import Display from './Display/Display';
 import Friend from './Friend';
 import "./Footer.css";
 

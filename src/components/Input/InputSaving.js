@@ -1,14 +1,14 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import icon_saving from "../img/sharexpense_icon_saving.png";
+import Header from '../Header';
+import Footer from '../Footer';
+import icon_saving from "../../img/sharexpense_icon_saving.png";
 
 import './Input.css';
 import { collection, addDoc } from "firebase/firestore"; 
 import { useState } from 'react';
-import { db } from "../firebase";
+import { db } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import { Link} from "react-router-dom";
 
 export default function InputSaving() {
@@ -31,7 +31,7 @@ export default function InputSaving() {
           }
   return (
     <>
-        <Header />
+        <Header headercolor="saving_header-box"/>
         <div className='input back_saving'>
             <div className='input_all'>
                 <div className='input_size'>

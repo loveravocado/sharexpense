@@ -1,9 +1,8 @@
 import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
-import CreateExpense from './CreateExpense'
-import CreateSaving from './CreateSaving'
-import { useEffect, useState, useContext } from 'react'; 
+import Header from '../Header'
+import Footer from '../Footer'
+import CreateExpense from '../Display/CreateExpense'
+import CreateSaving from '../Display/CreateSaving'
 
 export default function Input() {
 

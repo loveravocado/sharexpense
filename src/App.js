@@ -7,16 +7,16 @@ import { auth, provider } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { onAuthStateChanged } from "firebase/auth";
 import Home from './components/Home';
-import Input from './components/Input';
-import Display from './components/Display';
+import Input from './components/Input/Input';
+import Display from './components/Display/Display';
 import Friend from './components/Friend';
-import InputSelect from './components/InputSelect';
-import InputIncome from './components/InputIncome';
-import InputIncomeDone from './components/InputIncomeDone';
-import InputExpenseDone from './components/InputExpenseDone';
-import InputExpense from './components/InputExpense';
-import InputSaving from './components/InputSaving';
-import InputSavingDone from './components/InputSavingDone';
+import InputSelect from './components/Input/InputSelect';
+import InputIncome from './components/Input/InputIncome';
+import InputIncomeDone from './components/Input/InputIncomeDone';
+import InputExpenseDone from './components/Input/InputExpenseDone';
+import InputExpense from './components/Input/InputExpense';
+import InputSaving from './components/Input/InputSaving';
+import InputSavingDone from './components/Input/InputSavingDone';
 
 
 

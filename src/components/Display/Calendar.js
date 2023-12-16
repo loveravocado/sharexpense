@@ -1,7 +1,8 @@
 import dayjs from 'dayjs';
 import React from "react";
 import { useEffect, useState } from 'react';
-import "../App.css"; 
+import "../../App.css"; 
+import './Display.css';
 
 
 
@@ -29,9 +30,9 @@ const Day = (props) => {
       <div className="border border-gray-200 flex flex-col">
         <header className="flex flex-col items-center">
           {/* 1行目に曜日を表示 */}
-          {rowIdx === 0 && <p className="text-sm mt-1 leading-6">{day.format("ddd")}</p>}
-          <p className={`text-sm p-1  text-center" ${getCurrentDayClass()}`}></p>
-          <p className={"text-sm p-1  text-center"}>{day.format("DD")}</p>
+          {rowIdx === 0 && <p className="line_height">{day.format("ddd")}</p>}
+          <p className={`line_height  text-center" ${getCurrentDayClass()}`}></p>
+          <p className={"line_height  text-center"}>{day.format("DD")}</p>
           <p>a</p>
         </header>
       </div>
@@ -55,14 +56,14 @@ const Month = (props) => {
 export default function Calendar(){
     const [currentMonth, setCurrentMonth] = useState(getMonth());
 
-    // return(
-    //     <>
-    //     <div className="h-10 flex flex-col ">
-    //     <div className="flex flex-1 ">
-    //       {/* <Sidebar /> */}
-    //       <Month month={currentMonth} />
-    //     </div>
-    //   </div>
-    //     </>
-    // )
+    return(
+        <>
+        <div className="h-2 flex flex-col ">
+        <div className="flex flex-1 ">
+          {/* <Sidebar /> */}
+          <Month month={currentMonth} />
+        </div>
+      </div>
+        </>
+    )
 }
