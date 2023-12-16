@@ -36,7 +36,7 @@ export default function InputIncome() {
         <Header />
         <div className='input back_income'>
             <div className='input_all'>
-                <div className='input_income'>
+                <div className='input_size'>
                 <img className= "input_income_icon_contents" src= {icon_income} alt="home"/><p className="input_text_contents">収入</p>
                 <div className='input_item_back back_item income_color'><input type="text" className='input_item' placeholder='項目を記入' onChange={(e) => setIncomeItem(e.target.value)}></input></div>
                 <div className='input_item_back back_amount income_color'><input type="text" className='input_item' placeholder='金額を記入' onChange={(e) => setIncomeAmount(Number(e.target.value))}></input></div>

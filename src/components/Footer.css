@@ -4,26 +4,26 @@
 }
 .footer_box{
     width        : 100%;
-    height       : 80px;
-    background   : #5D5A55;
+    height       : 85px;
+    background   : #FFFFFF;
     top :auto;
     bottom: 0;
     position: absolute;
 }
 
-.sharexpense_icon_home{
+/* .sharexpense_icon_home{
     width: 90px;
     height: auto;
     left: 0;
     top: 0;
     bottom: 0;
 
-}
+} */
 .sharexpense_icon_input{
     position: absolute;
     width: 90px;
     height: auto;
-    left: 25%;
+    left: 10%;
     top: 2%;
     background-position: center;
     background-repeat: no-repeat;
@@ -33,7 +33,7 @@
     width: 90px;
     height: auto;
     position: absolute;
-    left: 50%;
+    left: 37%;
     top: 8%;
     bottom: 13%;
     background-position: center;
@@ -44,7 +44,7 @@
     width: 90px;
     height: auto;
     position: absolute;
-    left: 75%;
+    left: 65%;
     top: 2%;
     bottom: 12%;
     background-position: center;

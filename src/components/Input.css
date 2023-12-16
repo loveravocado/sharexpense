@@ -14,11 +14,20 @@
 .back_expense{
     background-color: #CDD4FF;
 }
+.back_saving{
+    background-color: #C2FFD0;
+}
 .income_color{
     background-color: #FACF3B;
 }
 .expense_color{
     background-color: #223B8C;
+}
+.saving_color{
+    background-color: #3ACA5B;
+}
+.expense_text_color{
+    color: #FFFFFF;
 }
 
 .input_all{
@@ -87,8 +96,8 @@
     font-weight: 900;
 }
 
-/* input_income */
-.input_income {
+/* input */
+.input_size {
     width: 100%;
     height: 620px;
 
@@ -109,6 +118,14 @@
     height: auto;
     top:-25%;
     left: 8%;
+}
+.input_saving_icon_contents{
+    position: absolute;
+    z-index: 8;
+    width: 76%;
+    height: auto;
+    top:-25%;
+    left: 13%;
 }
 
 /* 共通 */
@@ -176,7 +193,6 @@
     left: 12%;
     width: 300px;
     height: 300px;
-    background-color: #FACF3B;
     border-radius: 50%;
     z-index: 16;
     font-size: 30px;
@@ -196,7 +212,6 @@
     left: 30%;
     width: 150px;
     height: 150px;
-    background-color: #FACF3B;
     border-radius: 50%;
     z-index: 16;
     font-size: 20px;

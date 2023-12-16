@@ -13,8 +13,10 @@ import Friend from './components/Friend';
 import InputSelect from './components/InputSelect';
 import InputIncome from './components/InputIncome';
 import InputIncomeDone from './components/InputIncomeDone';
+import InputExpenseDone from './components/InputExpenseDone';
 import InputExpense from './components/InputExpense';
 import InputSaving from './components/InputSaving';
+import InputSavingDone from './components/InputSavingDone';
 
 
 
@@ -29,7 +31,9 @@ export default function App(){
                      <Route path="/input_income" element={<InputIncome />} />
                      <Route path="/input_incomedone" element={<InputIncomeDone />} />
                      <Route path="/input_expense" element={<InputExpense/>} />
+                     <Route path="/input_expensedone" element={<InputExpenseDone />} />
                      <Route path="/input_saving" element={<InputSaving />} />
+                     <Route path="/input_savingdone" element={<InputSavingDone />} />
                      <Route path="/display" element={<Display />} />
                      <Route path="/friend" element={<Friend />} />
              </Routes>

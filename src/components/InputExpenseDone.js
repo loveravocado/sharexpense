@@ -7,13 +7,13 @@ import { Link} from "react-router-dom";
 
 
 
-export default function InputIncomeDone() {
+export default function InputExpenseDone() {
   return (
     <>
         <Header />
         <div className='whiteshadow'></div>
-        <div className='inputincomedown income_color'><p>保存されました</p></div>
-        <Link to ="/input" ><div className='inputincomeback income_color'><p>入力に戻る</p></div></Link>
+        <div className='inputincomedown expense_color expense_text_color'><p>保存されました</p></div>
+        <Link to ="/input" ><div className='inputincomeback expense_color expense_text_color'><p>入力に戻る</p></div></Link>
         <Footer /> 
         
     </>

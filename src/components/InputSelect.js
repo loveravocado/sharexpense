@@ -14,8 +14,8 @@ export default function InputSelect() {
     <div className='input back_default'>
         <div className='input_all'>
             <Link to ="/input_income" ><img className= "input_icon_income" src= {icon_income} alt="home"/><p className="input_text_income">収入</p></Link>
-            <Link to ="/input_expense" ><img className= "input_icon_expense" src= {icon_expense} alt="home"/><p className="input_text_expense">支出</p></Link>
-            <Link to ="/input_savig" ><img className= "input_icon_saving" src= {icon_saving} alt="home"/><p className="input_text_saving">貯金</p></Link>
+            <Link to ="/input_expense" ><img className= "input_icon_expense" src= {icon_expense} alt="home"/><p className="input_text_expense expense_text_color">支出</p></Link>
+            <Link to ="/input_saving" ><img className= "input_icon_saving" src= {icon_saving} alt="home"/><p className="input_text_saving">貯金</p></Link>
         </div>
     </div>
     <Footer />
