@@ -17,6 +17,7 @@ import InputExpenseDone from './components/Input/InputExpenseDone';
 import InputExpense from './components/Input/InputExpense';
 import InputSaving from './components/Input/InputSaving';
 import InputSavingDone from './components/Input/InputSavingDone';
+import DisplayExpense from './components/Display/DisplayTotal';
 
 
 
@@ -35,6 +36,7 @@ export default function App(){
                      <Route path="/input_saving" element={<InputSaving />} />
                      <Route path="/input_savingdone" element={<InputSavingDone />} />
                      <Route path="/display" element={<Display />} />
+                     <Route path="/displayex" element={<DisplayExpense />} />
                      <Route path="/friend" element={<Friend />} />
              </Routes>
 

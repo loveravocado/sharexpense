@@ -29,7 +29,6 @@ const Day = (props) => {
     return (
       <div className="border border-gray-200 flex flex-col">
         <header className="flex flex-col items-center">
-          {/* 1行目に曜日を表示 */}
           {rowIdx === 0 && <p className="line_height">{day.format("ddd")}</p>}
           <p className={`line_height  text-center" ${getCurrentDayClass()}`}></p>
           <p className={"line_height  text-center"}>{day.format("DD")}</p>
@@ -58,9 +57,9 @@ export default function Calendar(){
 
     return(
         <>
+        <div className="sidebar"><p className="monthnumber">12月</p></div>
         <div className="h-2 flex flex-col ">
         <div className="flex flex-1 ">
-          {/* <Sidebar /> */}
           <Month month={currentMonth} />
         </div>
       </div>
