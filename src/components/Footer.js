@@ -9,7 +9,7 @@ import React from 'react';
 import Home from './Home';
 import Input from './Input/Input';
 import Display from './Display/Display';
-import Friend from './Friend';
+import Friend from './Friend/Friend';
 import "./Footer.css";
 
 

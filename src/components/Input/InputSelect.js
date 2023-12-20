@@ -11,7 +11,7 @@ import "./Input.css";
 export default function InputSelect() {
   return (
     <>
-    <Header headercolor = "beige_header-box"/>
+    <Header name="オカネを入力" headercolor = "beige_header-box"/>
     <div className='input back_default'>
         <div className='input_all'>
             <Link to ="/input_income" ><img className= "input_icon_income" src= {icon_income} alt="income"/><p className="input_text_income">収入</p></Link>

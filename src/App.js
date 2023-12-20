@@ -9,7 +9,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import Home from './components/Home';
 import Input from './components/Input/Input';
 import Display from './components/Display/Display';
-import Friend from './components/Friend';
+import Friend from './components/Friend/Friend';
 import InputSelect from './components/Input/InputSelect';
 import InputIncome from './components/Input/InputIncome';
 import InputIncomeDone from './components/Input/InputIncomeDone';

@@ -1,0 +1,19 @@
+.friend {
+    top: 5%;
+    position: relative;
+    z-index: 10;
+}
+.saving_img{
+    width: 30%;
+}
+.saving_maininfo{
+    display: flex;
+    margin-top: 10px;
+    font-weight: 900;
+}
+.saving_subinfo{
+    display: block;
+}
+.saving_info{
+    margin: 5px 0 10px 20px;
+}

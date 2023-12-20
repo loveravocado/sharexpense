@@ -1,13 +1,14 @@
 import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
+import Header from '../Header'
+import Footer from '../Footer'
 import { useEffect, useState, useContext, useRef  } from 'react';
 import { collection, getDocs, where, query } from "firebase/firestore"; 
-import { auth, provider, username } from "../firebase";
+import { auth, provider, username } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { db } from "../firebase";
-import { UserName } from './Home'; 
+import { db } from "../../firebase";
+import { UserName } from '../Home'; 
+import "./Friend.css";
 
 
 export default function Friend(){
@@ -22,19 +23,16 @@ export default function Friend(){
   );
   return (
     <div>
-        <Header name="Friend"/>
-        Friend
-        <div className='friend'>
-          <div className='displayfriend'>
-            <h1>友達一覧</h1>
-            {fruid ? (
-            <>
-            <FriendData  uid={fruid}/>
-            </>
-            ) :("")}
-
-            
-            
+        <Header name="フレンドの貯金" headercolor= "saving_header-box"/>
+        <div className='input back_saving'>
+          <div className='input_all'>
+            <div className='input_size'>
+              <div className='friend'>
+              {fruid 
+              ? (<><FriendData  uid={fruid}/></>) 
+              :("")}
+            </div>
+            </div>
           </div>
         </div>
         <Footer />
@@ -70,9 +68,14 @@ function FriendData({uid}){
     <>
     {savings.map((saving)=> ( 
       <div key={saving.username }>
-        <div>{saving.username}</div>
-        <div>{saving.month}</div>
-        <div>{saving.amount}</div>
+        <div className='saving_maininfo'>
+        <img className="saving_img" src={auth.currentUser.photoURL} alt=""></img>
+        <div className='saving_subinfo'>
+            <div className='saving_info'>{saving.username}</div>
+            <div className='saving_info'>{saving.month}月</div>
+            <div className='saving_info'>{saving.amount}</div>
+          </div>
+        </div>
       </div>
     ))}
     </>

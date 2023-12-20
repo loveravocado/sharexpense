@@ -13,7 +13,7 @@ export default function Display(){
 
     return (
       <> 
-          <Header name="12月のオカネ事情" headercolor= "beige_header-box"/>
+          <Header name="オカネ事情" headercolor= "beige_header-box"/>
           <div className="input back_default">
             <div className='input_all'>
               <div className='input_size'>

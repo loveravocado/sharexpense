@@ -1,5 +1,5 @@
 import { collection, getDocs, getFirestore, where, query } from "firebase/firestore"; 
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useContext } from 'react';
 import dayjs from 'dayjs';
 import React from "react";
 import { db } from "../../firebase";
@@ -48,9 +48,30 @@ function getMonth(month = dayjs().month()){
   });
   return daysMatrix;
 }
+function CalendarHeader(){
+  const [monthIndex, setMonthIndex] =useState(0);
+  const handlePrevMonth = () => {
+    
+    setMonthIndex(monthIndex - 1);
+  };
+  const handelNextMonth = () => {
+    setMonthIndex(monthIndex + 1);
+  };
+  useEffect(() => {
+    // setCurrentMonth(getMonth(monthIndex));
+  }, [monthIndex]);
+  return(
+    <>
+
+
+    </>
+  )
+}
 const Day = (props) => {
-  const { day, rowIdx, expenses } = props;
-  const currentlocation = String(day.$y) + String("-") + String(day.$M) + String("-") + String(day.$D);
+  const { day, rowIdx, incomes, expenses } = props;
+  
+  const currentlocation = day.format("YYYY-MM-DD");
+
   const getCurrentDayClass = () => {
       return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY")
         ? "bg-blue-600 text-white rounded-full w-7"
@@ -60,12 +81,21 @@ const Day = (props) => {
   return (
     <div className="border border-gray-200 flex flex-col">
       <header className="flex flex-col items-center">
-        {rowIdx === 0 && <p className="line_height">{day.format("ddd")}</p>}
-        <p className={`line_height  text-center" ${getCurrentDayClass()}`}></p>
+        {rowIdx === 0 && <p className="line_height ">{day.format("ddd")}</p>}
+        <p className={`line_height  text-center " ${getCurrentDayClass()}`}></p>
         <p className={"line_height  text-center"}>{day.format("DD")}</p>
+        {rowIdx === 0 ? (<p className="week_margin" ></p>) : ("")}
+        
+        <p>{incomes.map((income) => (
+            <div className="list_income" key={income.item}>
+                <div>{income.date === currentlocation ? 
+                (<>{income.amount}</>):("")}</div>
+            </div>
+        
+          ))}</p>
         <p>{expenses.map((expense) => (
             <div className="list_expense" key={expense.item}>
-                <div>{expense.date == currentlocation ? 
+                <div>{expense.date === currentlocation ? 
                 (<>{expense.amount}</>):("")}</div>
             </div>
         
@@ -75,13 +105,13 @@ const Day = (props) => {
   );
 };
 const Month = (props) => {
-  const { month, expenses } = props;
+  const { month, incomes, expenses } = props;
   return (
     <div className="flex-1 grid grid-cols-7 grid-rows-5 ">
       {month.map((row, i) => (
         <React.Fragment key={i}>
           {row.map((day, idx) => (
-            <Day day={day} key={idx} rowIdx={i} expenses={expenses}/>
+            <Day day={day} key={idx} rowIdx={i} incomes={incomes} expenses={expenses}/>
           ))}
         </React.Fragment>
       ))}
@@ -89,10 +119,23 @@ const Month = (props) => {
   );
 };
 function DisplayTotalData({uid}){
+  const m = new Date();
   const [incomes, setIncomes] = useState([]);
   const [expenses, setExpenses] = useState([]);
   const [savings, setSavings] = useState([]);
   const [currentMonth, setCurrentMonth] = useState(getMonth());
+  const [monthIndex, setMonthIndex] =useState(m.getMonth() );
+  const handlePrevMonth = () => {
+    
+    setMonthIndex(monthIndex - 1);
+  };
+  const handelNextMonth = () => {
+    setMonthIndex(monthIndex + 1);
+  };
+  useEffect(() => {
+    setCurrentMonth(getMonth(monthIndex));
+  }, [monthIndex]);
+
 
   useEffect(() => {
     const f = async() => {
@@ -112,6 +155,8 @@ function DisplayTotalData({uid}){
   }
   f();
   }, []);
+
+
   
 
   const total_income = incomes.reduce((sum, i) => sum + i.amount, 0);
@@ -143,15 +188,16 @@ function DisplayTotalData({uid}){
           </div>
 
           <div className="calendar">
-            <div className="sidebar">
-              <button className="sidebar_btn_left">先月</button>
-              <p className="monthnumber">12月</p>
-              <button className="sidebar_btn_light">来月</button>
-              </div>
 
+          <div className="sidebar">
+          <p className="monthnumber">{dayjs(new Date(dayjs().year(), monthIndex )).format("YYYY MM月")}</p>
+      <button className="sidebar_btn_left" onClick={handlePrevMonth}>先月</button>
+      
+      <button className="sidebar_btn_light" onClick={handelNextMonth}>来月</button>
+      </div>
         <div className="h-2 flex flex-col ">
         <div className="flex flex-1 ">
-          <Month month={currentMonth} expenses={expenses}/>
+          <Month month={currentMonth} incomes={incomes}expenses={expenses} />
         </div>
     </div>
           </div>
