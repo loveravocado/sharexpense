@@ -44,21 +44,18 @@ export default function Friend(){
 function FriendData({uid}){
   
   const [savings, setSavings] = useState([]);
-
+  const [usersaving, setUsersaving] = useState([]);
 
   useEffect(() => {
     
     const f = async() => {
       
     const savingdata = query(collection(db, "saving"), where("uid", "!=", {uid}));
+    const usersavingdata = query(collection(db, "userdata"), where("uid", "!=", {uid}));
      
-
-      const querySnapshot = await getDocs(savingdata);
-    
-      querySnapshot.forEach((doc) =>{ 
-        setSavings((savings)=>[...savings, doc.data()]);
-      });
-
+    getDocs(savingdata, usersavingdata).then((detail) => {
+      setSavings(detail.docs.map((doc) => ({...doc.data()})));  
+    })
     };
     f();
    
@@ -72,8 +69,8 @@ function FriendData({uid}){
         <img className="saving_img" src={auth.currentUser.photoURL} alt=""></img>
         <div className='saving_subinfo'>
             <div className='saving_info'>{saving.username}</div>
-            <div className='saving_info'>{saving.month}月</div>
-            <div className='saving_info'>{saving.amount}</div>
+            <div className='saving_info'>{saving.date}月</div>
+            <div className='saving_info'>{saving.amount}円</div>
           </div>
         </div>
       </div>

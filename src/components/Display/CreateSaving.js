@@ -18,7 +18,8 @@ export default function CreateSaving() {
           setSausername(user.displayName)
           }
       })
-      const CreateExpense = async () =>{
+      console.log(sausername)
+      const CreateSaving = async () =>{
         await addDoc(collection(db, "saving"),{
           month:month,
           amount:savingAmount,
@@ -30,7 +31,7 @@ export default function CreateSaving() {
         <div className='inputdetails'>
             <input type="text" placeholder='月を記入' onChange={(e) => setMonth(e.target.value)} />
             <input type="text" placeholder='金額を記入' onChange={(e) => setSavingAmount(e.target.value)} />
-            <button className='postButton' onClick={CreateExpense}>貯金する</button>
+            <button className='postButton' onClick={CreateSaving}>貯金する</button>
       </div>
       )
 

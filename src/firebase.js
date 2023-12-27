@@ -5,13 +5,13 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDQGYvddpX97n9l-K5NIBK0fxaIKkLkKEg",
-    authDomain: "sharexpense-269df.firebaseapp.com",
-    projectId: "sharexpense-269df",
-    storageBucket: "sharexpense-269df.appspot.com",
-    messagingSenderId: "73843866638",
-    appId: "1:73843866638:web:1b2ab0ba6efb1ebae8105f",
-    measurementId: "G-2RVJKJ85QG"
+  apiKey: "AIzaSyAKUmEJwaFQ0kEeNaOul8z8ydV9ESC8U9Q",
+  authDomain: "sharexpense2.firebaseapp.com",
+  projectId: "sharexpense2",
+  storageBucket: "sharexpense2.appspot.com",
+  messagingSenderId: "341905260616",
+  appId: "1:341905260616:web:cd6ee5be712b9f3f45187d",
+  measurementId: "G-GW6Z63VK4K"
   };
 
 const app = initializeApp(firebaseConfig);
