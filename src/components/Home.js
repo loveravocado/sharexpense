@@ -20,7 +20,7 @@ export default function Home() {
 
     return (
       <>
-      <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script> 
   
       <div>
         
@@ -38,7 +38,7 @@ export default function Home() {
                   <SignInButton />
               )}    
 
-      </div>
+      </div> 
       </>
     )
   }
