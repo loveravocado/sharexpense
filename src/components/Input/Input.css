@@ -72,7 +72,7 @@
 }
 .input_income_icon_contents{
     position: absolute;
-    z-index: 8;
+    z-index: 13;
     width: 50%;
     height: auto;
     top:-20%;
@@ -101,7 +101,7 @@
     position: absolute;
     top: 0;
     left: 38%;
-    z-index: 9;
+    z-index: 14;
     font-size: 50px;
     font-weight: 900;
 }

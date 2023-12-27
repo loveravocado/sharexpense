@@ -10,6 +10,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase";
 import { Link} from "react-router-dom";
 import { db } from '../../firebase';
+import Hearup from '../../animation/Hearup';
 
 export default function InputIncome() {
         const [item, setIncomeItem] = useState();
@@ -34,6 +35,7 @@ export default function InputIncome() {
   return (
     <>
         <Header headercolor= "income_header-box"/>
+        
         <div className='input back_income'>
             <div className='input_all'>
                 <div className='input_size'>
@@ -45,6 +47,7 @@ export default function InputIncome() {
                 </div>
             </div>
         </div>
+        
         <Footer />
     </>
   )
