@@ -15,10 +15,12 @@ export default function InputSaving() {
         const [date, setSavingDate] = useState("");
         const [amount, setSavingAmount] = useState();
         const [exuid, setSavingExuid] = useState();
+        const [exusername, setExusername] = useState();
     
         onAuthStateChanged(auth, (user) => {
           if (user) {
-              setSavingExuid(user.uid)
+              setSavingExuid(user.uid);
+              setExusername(user.displayName);
               }
           })
         
@@ -26,7 +28,8 @@ export default function InputSaving() {
             await addDoc(collection(db, "saving"),{
               date:date,
               amount:amount,
-              uid:exuid
+              uid:exuid,
+              username: exusername
             })
           }
   return (
