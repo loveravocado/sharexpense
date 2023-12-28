@@ -15,8 +15,8 @@ const  Header = ({name, headercolor}) => {
             <div className='header-name'>{name}</div>
               <img className= "input_icon_back" src= {icon_back} alt="back" onClick={() => navigate(-1)}/>
         </div>
-        </motion.div>
-        <div className='header-bottombox'></div>
+      </motion.div>
+      <div className='header-bottombox'></div>
     </div>
   )
 }
