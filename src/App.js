@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes, Link, useLocation} from "react-
 import { auth, provider } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { onAuthStateChanged } from "firebase/auth";
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import Input from './components/Input/Input';
 import Display from './components/Display/Display';
 import Friend from './components/Friend/Friend';
@@ -19,6 +19,7 @@ import InputSaving from './components/Input/InputSaving';
 import InputSavingDone from './components/Input/InputSavingDone';
 import DisplayExpense from './components/Display/DisplayTotal';
 import { AnimatePresence } from "framer-motion";
+import Start from './components/Home/Start';
 
 
 
@@ -30,6 +31,7 @@ export default function App(){
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Home />} />
+              <Route path='start' element={<Start />} />
               <Route path="/input" element={<InputSelect />} />
               <Route path="/input_income" element={<InputIncome />} />
               <Route path="/input_incomedone" element={<InputIncomeDone />} />

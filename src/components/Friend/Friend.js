@@ -7,7 +7,7 @@ import { auth, provider, username } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db } from "../../firebase";
-import { UserName } from '../Home'; 
+import { UserName } from '../Home/Home'; 
 import "./Friend.css";
 
 

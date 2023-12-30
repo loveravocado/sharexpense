@@ -7,7 +7,7 @@ import React from 'react';
 import {motion} from "framer-motion"
 
 
-import Home from './Home';
+import Home from './Home/Home';
 import Input from './Input/Input';
 import Display from './Display/Display';
 import Friend from './Friend/Friend';
