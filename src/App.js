@@ -20,6 +20,7 @@ import InputSavingDone from './components/Input/InputSavingDone';
 import DisplayExpense from './components/Display/DisplayTotal';
 import { AnimatePresence } from "framer-motion";
 import Start from './components/Home/Start';
+import Login from './components/Home/Login';
 
 
 
@@ -32,6 +33,7 @@ export default function App(){
       <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Home />} />
               <Route path='start' element={<Start />} />
+              <Route path='login' element={<Login />} />
               <Route path="/input" element={<InputSelect />} />
               <Route path="/input_income" element={<InputIncome />} />
               <Route path="/input_incomedone" element={<InputIncomeDone />} />
