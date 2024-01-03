@@ -28,10 +28,10 @@ export default function Friend(){
           <div className='input_all'>
             <div className='input_size'>
               <div className='friend'>
-              {fruid 
-              ? (<><FriendData  uid={fruid}/></>) 
-              :("")}
-            </div>
+                {fruid 
+                ? (<><FriendData  uid={fruid}/></>) 
+                :("")}
+              </div>
             </div>
           </div>
         </div>

@@ -15,8 +15,8 @@ export default function Start() {
                 <P5 />
             </div>
             <div className="btn_start">
-                <Link to="../display" ><div className="circle_start"><div className="incircle"><div className="text_start">Start</div></div></div></Link>
-                <Link to="../login"><div className="circle_signin"><div className="incircle"><div className="text_start">Log in</div></div></div></Link>
+                <div className="circle_start"><Link to="../display" ><div className="incircle"><div className="text_start">Start</div></div></Link></div>
+                <div className="circle_signin"><Link to="../login"><div className="incircle"><div className="text_start">Log in</div></div></Link></div>
             </div>
         </motion.div>
         
@@ -40,8 +40,7 @@ function P5(){
         p5.createCanvas(414, 896).parent(canvasParentRef);
         p5.background("#FDFDEB");
 
-        let img;
-        
+
         for(let j=0; j<3; j++){
             for(let i=0; i<15; i++){
                 let cirecles_info = [];
@@ -63,6 +62,7 @@ function P5(){
     
       const draw = (p5) => {
         p5.background("#FDFDEB");
+
         for(let i=0; i < cirecles.length; i++){
             if(cirecles[i][0] < 0 || cirecles[i][0] > 414 ){
                 cirecles[i][5] = cirecles[i][5] * (-1);
@@ -72,6 +72,7 @@ function P5(){
             }
             
         }
+
         for(let i=0; i < cirecles.length; i++){
             cirecles[i][0] += cirecles[i][5];
             cirecles[i][1] += cirecles[i][6];
@@ -80,6 +81,7 @@ function P5(){
             p5.translate(cirecles[i][0], cirecles[i][1])
             p5.rotate(cirecles[i][4]);
             p5.tint(255, cirecles[i][3]);
+
             if(i < 15){
                 p5.image(income_money, 0, 0, cirecles[i][2], cirecles[i][2]);
             }
@@ -93,6 +95,14 @@ function P5(){
         }
                 
       };
+      const mouseClicked = (p5) => {
+        for(let i=0; i < cirecles.length; i++){
+            if(p5.abs(p5.mouseX - cirecles[i][0]) < 55 && p5.abs(p5.mouseY - cirecles[i][1]) < 55){
+                cirecles[i][3] = 0;
+                console.log("a");
+            }
+        }
+      }
     
-      return <Sketch preload = {preload} setup={setup} draw={draw} />;
+      return <Sketch preload = {preload} setup={setup} draw={draw} mouseClicked={mouseClicked}/>;
 }

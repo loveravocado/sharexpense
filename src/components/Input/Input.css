@@ -10,7 +10,8 @@
     position: relative;
     top: 25%;
     width: 100%;
-    height: 620px;
+    height: 65vh;
+    overflow: scroll;
 }
 
 .input_icon_income{
@@ -66,7 +67,7 @@
 .input_size {
     position: relative;
     width: 90%;
-    height: 620px;
+    height: 100%;
     left: 5%;
 
 }

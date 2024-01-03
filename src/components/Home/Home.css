@@ -12,6 +12,8 @@
     transform: translate(-50%, -50%);
 }
 .start{
+    width: 100%;
+    height: 100vh;
     display: block;
     position: relative;
 }
@@ -65,4 +67,14 @@
     position: relative;
     top: 50%;
     transform: translate(0, -50%);
+}
+.home_tap{
+    position: relative;
+    top: 35%;
+    left: 50%;
+    transform: translate(-17%, 0);
+    color: #378D4B;
+    font-size: 30px;
+    font-weight: 900;
+
 }
