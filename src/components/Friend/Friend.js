@@ -25,7 +25,7 @@ export default function Friend(){
     <div>
         <Header name="フレンドの貯金" headercolor= "saving_header-box"/>
         <div className='input back_saving'>
-          <div className='input_all'>
+          <div className='input_all overscroll'>
             <div className='input_size'>
               <div className='friend'>
                 {fruid 

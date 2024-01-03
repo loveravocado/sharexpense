@@ -21,6 +21,9 @@ import DisplayExpense from './components/Display/DisplayTotal';
 import { AnimatePresence } from "framer-motion";
 import Start from './components/Home/Start';
 import Login from './components/Home/Login';
+import InputSavingSelect from './components/Input/InputSavingSelect';
+import InputSavingItem from './components/Input/InputSavingItem';
+import InputSavingItemDone from './components/Input/InputSavingItemDone';
 
 
 
@@ -40,7 +43,10 @@ export default function App(){
               <Route path="/input_expense" element={<InputExpense/>} />
               <Route path="/input_expensedone" element={<InputExpenseDone />} />
               <Route path="/input_saving" element={<InputSaving />} />
+              <Route path="/input_savingselect" element={<InputSavingSelect />} />
+              <Route path="/input_savingitem" element={<InputSavingItem />} />
               <Route path="/input_savingdone" element={<InputSavingDone />} />
+              <Route path="/input_savingitemdone" element={<InputSavingItemDone />} />
               <Route path="/display" element={<Display />} />
               <Route path="/displayex" element={<DisplayExpense />} />
               <Route path="/friend" element={<Friend />} />

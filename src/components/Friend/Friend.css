@@ -22,3 +22,6 @@
 }
 .input_size{
 }
+.overscroll{
+    overflow: scroll;
+}

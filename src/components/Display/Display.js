@@ -15,7 +15,7 @@ export default function Display(){
       <> 
           <Header name="オカネ事情" headercolor= "beige_header-box"/>
           <div className="input back_default">
-            <div className='input_all'>
+            <div className='input_all overscroll'>
               <div className='input_size'>
                 <DisplayTotal />
 
