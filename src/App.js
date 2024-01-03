@@ -24,6 +24,7 @@ import Login from './components/Home/Login';
 import InputSavingSelect from './components/Input/InputSavingSelect';
 import InputSavingItem from './components/Input/InputSavingItem';
 import InputSavingItemDone from './components/Input/InputSavingItemDone';
+import SavingDetail from './components/Display/SavingDetail';
 
 
 
@@ -49,6 +50,7 @@ export default function App(){
               <Route path="/input_savingitemdone" element={<InputSavingItemDone />} />
               <Route path="/display" element={<Display />} />
               <Route path="/displayex" element={<DisplayExpense />} />
+              <Route path="/display/saving_detail" element={<SavingDetail />} />
               <Route path="/friend" element={<Friend />} />
       </Routes>
     </AnimatePresence>

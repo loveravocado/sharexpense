@@ -1,13 +1,11 @@
 import React from 'react'
 import Header from '../Header'
 import Footer from '../Footer'
-import { useEffect, useState, useContext, useRef  } from 'react';
+import { useEffect, useState } from 'react';
 import { collection, getDocs, where, query } from "firebase/firestore"; 
-import { auth, provider, username } from "../../firebase";
+import { auth} from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { db } from "../../firebase";
-import { UserName } from '../Home/Home'; 
 import "./Friend.css";
 
 
@@ -44,7 +42,6 @@ export default function Friend(){
 function FriendData({uid}){
   
   const [savings, setSavings] = useState([]);
-  const [usersaving, setUsersaving] = useState([]);
 
   useEffect(() => {
     

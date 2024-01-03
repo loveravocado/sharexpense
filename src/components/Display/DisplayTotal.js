@@ -10,6 +10,7 @@ import icon_income from "../../img/sharexpense_icon_income.png";
 import icon_expense from "../../img/sharexpense_icon_expense.png";
 import icon_saving from "../../img/sharexpense_icon_saving.png";
 import "./Display.css";
+import { Link } from "react-router-dom";
 
 
 
@@ -177,10 +178,10 @@ function DisplayTotalData({uid}){
               <img className="display_four_icon four_expense" src={icon_expense} alt="expense"/>
               <p className="display_text_contents expense_text_color">支出</p><p className="total">{total_expense}円</p>
             </div>
-            <div className="display_box saving_box back_saving">
+            <Link to ="saving_detail" className="display_box saving_box back_saving">
               <img className="display_four_icon four_saving" src={icon_saving} alt="saving"/>
               <p className="display_text_contents">貯金</p><p className="total">{total_saving}円</p>
-            </div>
+            </Link>
             <div className="display_box rest_box">
               <img className="display_four_icon four_rest" src={icon_expense} alt="rest"/>
               <p className="display_text_contents expense_text_color">残高</p><p className="total">{total_rest}円</p>
