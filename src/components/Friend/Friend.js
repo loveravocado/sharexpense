@@ -40,15 +40,15 @@ export default function Friend(){
 }
 
 function FriendData({uid}){
-  
+  console.log(uid)
   const [savings, setSavings] = useState([]);
 
   useEffect(() => {
     
     const f = async() => {
       
-    const savingdata = query(collection(db, "saving"), where("uid", "!=", {uid}));
-    const usersavingdata = query(collection(db, "userdata"), where("uid", "!=", {uid}));
+    const savingdata = query(collection(db, "saving"), where("uid", "!=", uid));
+    const usersavingdata = query(collection(db, "userdata"), where("uid", "!=", uid));
      
     getDocs(savingdata, usersavingdata).then((detail) => {
       setSavings(detail.docs.map((doc) => ({...doc.data()})));  

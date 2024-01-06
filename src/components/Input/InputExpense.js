@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 import icon_expense from "../../img/sharexpense_icon_expense.png";
@@ -15,13 +15,15 @@ export default function InputExpense() {
         const [item, setExpenseItem] = useState();
         const [amount, setExpenseAmount] = useState();
         const [date, setExpenseDate] = useState("");
-        const [exuid, setExpenseExuid] = useState();
-    
+        const [exuid, setExpenseExuid] = useState("id");
+
+        useEffect(() => {
         onAuthStateChanged(auth, (user) => {
           if (user) {
               setExpenseExuid(user.uid)
               }
           })
+        }, []);
         
           const CreateExpense = async () =>{
             await addDoc(collection(db, "expense"),{

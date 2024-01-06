@@ -61,7 +61,7 @@ function SavingItemData({uid}){
     return(
       <>
       {savingitems.map((savingitem)=> ( 
-        <div key={savingitem.username }>
+        <div key={savingitem.id }>
           <div className='saving_maininfo'>
           <div className='saving_subinfo'>
               <div className='saving_info'>{savingitem.item}</div>

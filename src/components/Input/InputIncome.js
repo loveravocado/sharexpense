@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 import icon_income from "../../img/sharexpense_icon_income.png";
@@ -16,13 +16,14 @@ export default function InputIncome() {
         const [item, setIncomeItem] = useState();
         const [amount, setIncomeAmount] = useState();
         const [date, setIncomeDate] = useState("");
-        const [exuid, setIncomeExuid] = useState();
-    
+        const [exuid, setIncomeExuid] = useState("id");
+        useEffect(() => {
         onAuthStateChanged(auth, (user) => {
           if (user) {
               setIncomeExuid(user.uid)
               }
           })
+        }, [])
         
           const CreateIncome = async () =>{
             await addDoc(collection(db, "income"),{

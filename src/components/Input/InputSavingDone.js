@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../Header'
 import { Link } from 'react-router-dom'
 import Footer from '../Footer'
 import icon_saving from "../../img/sharexpense_icon_saving.png";
 import icon_saving_money from  "../../img/sharexpense_icon_savingmoney.png";
 import { motion } from 'framer-motion';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 export default function InputSavingDone() {
   return (
@@ -30,3 +32,4 @@ export default function InputSavingDone() {
 </>
   )
 }
+

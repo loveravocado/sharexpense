@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Input.css';
-import { collection, addDoc, DocumentReference, doc, setDoc } from "firebase/firestore"; 
+import { collection,  doc, getDocs, query, setDoc, where } from "firebase/firestore"; 
 import { useState } from 'react';
 import { db } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -22,6 +22,7 @@ export default function InputSavingItem() {
           setExusername(user.displayName);
           }
       })
+
       const CreateSavingItem = async () =>{
       const addDataRef = doc(collection(db, 'savingitem'))
       await setDoc(addDataRef, {
