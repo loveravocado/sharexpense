@@ -16,7 +16,7 @@ export default function Start() {
             </div>
             <div className="btn_start">
                 <div className="circle_start"><Link to="../display" ><div className="incircle"><div className="text_start">Start</div></div></Link></div>
-                <div className="circle_signin"><Link to="../login"><div className="incircle"><div className="text_start">Log in</div></div></Link></div>
+                <div className="circle_signin"><Link to="../login"><div className="incircle"><div className="text_start">Signin</div></div></Link></div>
             </div>
         </motion.div>
         
@@ -99,7 +99,6 @@ function P5(){
         for(let i=0; i < cirecles.length; i++){
             if(p5.abs(p5.mouseX - cirecles[i][0]) < 55 && p5.abs(p5.mouseY - cirecles[i][1]) < 55){
                 cirecles[i][3] = 0;
-                console.log("a");
             }
         }
       }

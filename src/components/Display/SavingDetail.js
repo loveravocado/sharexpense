@@ -64,8 +64,11 @@ function SavingItemData({uid}){
         <div key={savingitem.id }>
           <div className='saving_maininfo'>
           <div className='saving_subinfo'>
-              <div className='saving_info'>{savingitem.item}</div>
+              <div className='saving_info'>・{savingitem.item}</div>
+              <div className="info_amount">
+              <div className='saving_info'>{savingitem.nowamount}円/</div>
               <div className='saving_info'>{savingitem.amount}円</div>
+              </div>
             </div>
           </div>
         </div>

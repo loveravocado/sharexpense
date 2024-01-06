@@ -70,7 +70,6 @@ function CalendarHeader(){
 }
 const Day = (props) => {
   const { day, rowIdx, incomes, expenses } = props;
-  
   const currentlocation = day.format("YYYY-MM-DD");
 
   const getCurrentDayClass = () => {
@@ -87,20 +86,20 @@ const Day = (props) => {
         <p className={"line_height  text-center"}>{day.format("DD")}</p>
         {rowIdx === 0 ? (<p className="week_margin" ></p>) : ("")}
         
-        <p>{incomes.map((income) => (
-            <div className="list_income" key={income.item}>
+        <div>{incomes.map((income) => (
+            <div className="list_income" key={income.id}>
                 <div>{income.date === currentlocation ? 
                 (<>{income.amount}</>):("")}</div>
             </div>
         
-          ))}</p>
-        <p>{expenses.map((expense) => (
-            <div className="list_expense" key={expense.item}>
+          ))}</div>
+        <div>{expenses.map((expense) => (
+            <div className="list_expense" key={expense.id}>
                 <div>{expense.date === currentlocation ? 
                 (<>{expense.amount}</>):("")}</div>
             </div>
         
-          ))}</p>
+          ))}</div>
       </header>
     </div>
   );
@@ -198,7 +197,7 @@ function DisplayTotalData({uid}){
       </div>
         <div className="h-2 flex flex-col ">
         <div className="flex flex-1 ">
-          <Month month={currentMonth} incomes={incomes}expenses={expenses} />
+          <Month month={currentMonth} incomes={incomes} expenses={expenses} />
         </div>
     </div>
           </div>

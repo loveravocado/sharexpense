@@ -101,3 +101,13 @@
     height: auto;
     top:20%;
 }
+.home_signout{
+    position: relative;
+    width: 20%;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 800;
+    top: 10px;
+    left: 75%;
+    border: solid 3px #E5D391;
+}

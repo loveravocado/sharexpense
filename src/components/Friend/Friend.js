@@ -10,7 +10,8 @@ import "./Friend.css";
 
 
 export default function Friend(){
-  const [fruid, setFruid] = useState()
+  const [fruid, setFruid] = useState();
+  const [fruiamge, setFruimage] = useState();
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -40,14 +41,14 @@ export default function Friend(){
 }
 
 function FriendData({uid}){
-  console.log(uid)
   const [savings, setSavings] = useState([]);
+  console.log(auth.currentUser.photoURL)
 
   useEffect(() => {
     
     const f = async() => {
       
-    const savingdata = query(collection(db, "saving"), where("uid", "!=", uid));
+    const savingdata = query(collection(db, "savingitem"), where("uid", "!=", uid));
     const usersavingdata = query(collection(db, "userdata"), where("uid", "!=", uid));
      
     getDocs(savingdata, usersavingdata).then((detail) => {
@@ -61,13 +62,16 @@ function FriendData({uid}){
   return(
     <>
     {savings.map((saving)=> ( 
-      <div key={saving.username }>
+      <div key={saving.username}>
         <div className='saving_maininfo'>
-        <img className="saving_img" src={auth.currentUser.photoURL} alt=""></img>
+        {/* <img className="saving_img" src={saving.userimage} alt=""></img> */}
         <div className='saving_subinfo'>
             <div className='saving_info'>{saving.username}</div>
-            <div className='saving_info'>{saving.date}月</div>
+            <div className="info_amount">
+            <div className='saving_info'>{saving.item}</div>
+            <div className='saving_info'>{saving.nowamount}円 / </div>
             <div className='saving_info'>{saving.amount}円</div>
+            </div>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import Footer from '../Footer';
 import icon_expense from "../../img/sharexpense_icon_expense.png";
 
 import './Input.css';
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc, doc } from "firebase/firestore"; 
 import { useState } from 'react';
 import { db } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -17,20 +17,20 @@ export default function InputExpense() {
         const [date, setExpenseDate] = useState("");
         const [exuid, setExpenseExuid] = useState("id");
 
-        useEffect(() => {
         onAuthStateChanged(auth, (user) => {
           if (user) {
               setExpenseExuid(user.uid)
               }
           })
-        }, []);
         
           const CreateExpense = async () =>{
+            const addDataRef = doc(collection(db, 'expense'))
             await addDoc(collection(db, "expense"),{
               item:item,
               amount:amount,
               date:date,
-              uid:exuid
+              uid:exuid,
+              id: addDataRef.id
             })
           }
   return (

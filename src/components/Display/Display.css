@@ -127,3 +127,6 @@
 .overscroll{
     overflow: scroll;
 }
+.info_amount{
+    display: flex;
+}

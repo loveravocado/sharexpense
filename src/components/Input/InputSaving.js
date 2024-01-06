@@ -56,7 +56,7 @@ export default function InputSaving() {
           const InputChange = (e) => {
             setItemid(e.target.value) 
         }
-          console.log(itemid)
+
           useEffect(() => {
             const f = async () => {
             const savingitemdata = query(collection(db, "savingitem"), where("id", "==", itemid));
@@ -93,7 +93,6 @@ export default function InputSaving() {
 }
 
 function SumAmount({savingitems, amount, itemid}){
-  console.log("c")
   const item = savingitems[0];
   const total_savingitems = item.nowamount + Number(amount);
     updateDoc(doc(db, 'savingitem', itemid), {

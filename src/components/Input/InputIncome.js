@@ -4,7 +4,7 @@ import Footer from '../Footer';
 import icon_income from "../../img/sharexpense_icon_income.png";
 import '../Header.css';
 import './Input.css';
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc, doc, setDoc } from "firebase/firestore"; 
 import { useState } from 'react';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase";
@@ -26,11 +26,13 @@ export default function InputIncome() {
         }, [])
         
           const CreateIncome = async () =>{
+            const addDataRef = doc(collection(db, 'income'))
             await addDoc(collection(db, "income"),{
               item:item,
               amount:amount,
               date:date,
-              uid:exuid
+              uid:exuid,
+              id: addDataRef.id
             })
           }
   return (

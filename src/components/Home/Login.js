@@ -6,16 +6,19 @@ import { auth, provider,db } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState, createContext } from 'react';
 import { collection, addDoc, getDocs, where, query } from "firebase/firestore"; 
+import { Link } from 'react-router-dom';
 
 export default function Login() {
     const [username, setUsername] = useState("");
     const [uid, setUid] = useState("");
     const [useremail, setUseremail] = useState("");
+    const [userimage, setUserimage] = useState();
     onAuthStateChanged(auth, (user) => {
     if (user) {
             setUsername(user.displayName);
             setUid(user.uid);
             setUseremail(user.email);
+            setUserimage(auth.currentUser.photoURL)
 
     }})
 
@@ -23,18 +26,19 @@ export default function Login() {
       <>
        <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script> 
   
-      <div>
-        
+      <div className='login'>
+            
               {username ? (
                   <>
-                      <UserInfo username ={username} uid={uid} useremail={useremail}/>
+                  <div className="login_set"> 
+                      <UserInfo username ={username} uid={uid} useremail={useremail} userimage={userimage}/>
                       <SignOutButton />
-
+                </div>
                   </>
               ):(
                   <SignInButton />
               )}    
-
+        
       </div> 
       </>
     )
@@ -44,27 +48,53 @@ export default function Login() {
           signInWithPopup(auth, provider)
       }
       return (
-          <button onClick={signInWithGoogle}>
-              Googleでサインアップ
-          </button>
+        <div className='signup'>
+            <div className='circle_signup'>
+            <button className='btn_signup'onClick={signInWithGoogle}>
+                <div className='incircle'>
+                    <div className='text_signup'>
+                    Googleで<br></br>サインアップ
+                    </div>
+                </div>
+            </button>
+          </div>
+          </div>
   
       )
   }
   function SignOutButton(){
       return (
-          <button onClick={() => auth.signOut()}>
-              サインアウト
-          </button>
-  
+        <>
+        <button  className="btn_signout" onClick={() => auth.signOut()}>
+            <div className='circle_signout'>
+                <div className='incircle'>
+                <div className="signout">
+                サインアウト
+                </div>
+            </div>
+            </div>
+        </button>
+        
+        <div className='circle_home'>
+        <Link to ="/display" >
+            <div className='incircle'>
+            <div className="signout">
+              Home
+            </div>
+          </div>
+          </Link>
+        </div>
+       
+        </>
       )
   }
-  function UserInfo({username, uid, useremail}){
+  function UserInfo({username, uid, useremail, userimage}){
 
   useEffect(() => {
     
     const f = async() => {
       
-    const userdata = query(collection(db, "userdata"), where("uid", "==", {uid}));
+    const userdata = query(collection(db, "userdata"), where("uid", "==", uid));
 
     if(userdata){
         const UserData = async () =>{
@@ -72,7 +102,8 @@ export default function Login() {
             await addDoc(collection(db, "userdata"),{
               username: username,
               uid: uid,
-              useremail:useremail
+              useremail:useremail,
+              userimage: userimage
             })
           }
         UserData();
@@ -85,7 +116,7 @@ export default function Login() {
     
       return (
           <>
-              <div className='user-info'>
+              <div className='login_info'>
                   <img src={auth.currentUser.photoURL} alt=""></img>
                   <p> {auth.currentUser.displayName}</p>
               </div>
